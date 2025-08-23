@@ -1,0 +1,42 @@
+---
+layout: home
+title: Guidelines - Addons Framework 4 Moodle
+---
+<h1>Guidelines for creating an addon for Moodle</h1>
+<div><p>Af4m is a set of guidelines to help us create </p>
+    <ul>
+        <li>centrally managed,</li>
+        <li>reusable,</li>
+        <li>testable and</li>
+        <li>shareable</li>
+    </ul>
+<p>extensions to Moodle using JavaScript.</p></div>
+<p>It is a framework created to allow us to use existing Moodle infrastructure, and staff's familiarity with Moodle as an advantage and a bedrock to enhance students' learning experience, instead of rebuilding everything from the ground up. The framework is built to allow all Moodle users with editing rights to create extensions to Moodle, effectively opening open-source contributions to Moodle from thousands more users that can write simple JavaScript scripts but cannot build or install Moodle plugins.</p>
+<p>Let's go through the guidelines to create addons using the framework.</p>
+
+<section>
+<h2>Globally available addons</h2>
+<p>Addons should be globally available to all VLE users. This is common in web development, where all scripts are within a shared folder on the server. However, editors do not have access to folders on the Moodle server. They do however have access to Moodle courses. And guided by our fundamental rule to use Moodle existing infrastructure to our advantage when building af4m, we have adapted Moodle courses so that they are accessible to all VLE users without needing to be enrolled in them, effectively converting them to repositories.</p>
+<h3>Transform a Moodle course to addon repository</h3>
+<p>We do this by simply changing the <code>moodle/course:view</code> permission and adding a phantom Folder resource where we will house all scripts and relevant files for our enhancements.</p>
+<h2>Addons should be small scripts that are modularised and have single responsibility.</h2>
+<h2>Addons should be built to be reusable.</h2>
+<p>This is the beauty of addons. They work with surgical precision to enhance one area of interest. If more enhancements are needed for the same course, create one addon for every enhancement.</p>
+<h2>Addons should be included/injected only to modules or activities as required.</h2>
+<p>You can include addons either in sidebar text blocks, or in Text and media areas within a section. You can restrict where the addon will be loaded using relevant display settings for the text block or activity restrictions, but you should restrict further within the addon if needed.</p>
+<h2>Addons should be simple to be added by editors to their courses.</h2>
+<p>We recommend that you distribute addons using existing Moodle core infrastructure and specifically backups. Another way of distributing addons would be to have clear documentation that contains the HTML snippet that users need to copy/paste in place, as well as how the component containing the snippet needs to be configured.</p>
+<p>Alternatively, if you have the "Sharing cart" plugin installed on your Moodle installation, you could use its fine-tuned backup/restore functionality to allow editors to use your addons.</p>
+<h2>Addons should be built as progressive enhancements to existing functionality.</h2>
+<p>This is fundamental for us. Af4m was built to enhance existing Moodle functionality. Af4m can be used to create completely new functionality as well, so in this case you will have to provide a simple version that should work with your minimum browser requirements and enhance it further to meet the learning experience needed.</p>
+<h2>Addons should implement graceful degradation</h2>
+<p>If for whatever reason the addon cannot work on the user's browser, graceful degradation should be implemented correctly so that Moodle shows the default/out of the box experience in this case, instead of a broken page.</p>
+<h2>Addons should be simple to be used by academics/editors.</h2>
+<p>If possible, use existing Moodle infrastructure that editors are familiar with, instead of rewriting new editing functionality. Enhance for learners but strive to keep as much of Moodle's default functionality in editing as possible to capitalise on academics' familiarity.</p>
+<h2>Addons should have unit testing and Behat testing.</h2>
+<p>Addons can be tested, both using unit testing and integration testing via Behat/Selenium, fully integrating with automated Moodle testing.</p>
+<h2>Group addons in relevant repositories</h2>
+<p>To keep things clean and tidy, we recommend that you group addons in relevant repositories. We also recommend that you place all documentation for the addons within the same course as the addons themselves.</p>
+<h2>Addons should always have documentation</h2>
+<p>You should always write documentation both for developers and for editors/users.</p>
+</section>
